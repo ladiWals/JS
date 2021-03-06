@@ -3,17 +3,25 @@ params = "url = news.com"
 // Создаю объект XMLHttpRequest
 request = new asuncRequest()
 
+// Инициализация HTTP-запроса в асинхронном режиме
 request.open("POST", "first-ajax.php", true)
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-request.setRequestHeader("Content-length", params.length)
-request.setRequestHeader("Connection", "close")
 
+// Устанавливаю, что значения параметров будут переданы в виде кортежа
+request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+
+// Установка функции для вызова при изменении статуса готовности
 request.onreadystatechange = function()
 {
+
+	// Если вызов завершён
 	if(this.readyState == 4)
 	{
+
+		// Если статус вызова успешный
 		if(this.status == 200)
 		{
+
+			// Если от сервера получен хоть какой-то текст
 			if(this.responseText != null)
 			{
 				document.getElementById('info').innerHTML = this.responseText
@@ -24,23 +32,28 @@ request.onreadystatechange = function()
 	}
 }
 
-request.send(params)
+// Отправка запроса на сервер
+request.send(	)
 
 // Создаёт объект XMLHttpRequest (кросс-браузерно)
 function asuncRequest()
 {
+
+	// Для браузеров, не относящихся к семейству IE
 	try
 	{
 		var request = new XMLHttpRequest()
 	}
 	catch(e1)
 	{
+		// Для IE 6+
 		try
 		{
 			request = new ActiveXObject("Msxml2.XMLHTTP")
 		}
 		catch(e2)
 		{
+			// Для IE 5
 			try
 			{
 				request = new ActiveXObject("Microsoft.XMLHTTP")
