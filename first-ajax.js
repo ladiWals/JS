@@ -1,4 +1,4 @@
-params = "url = news.com"
+params = "url=github.com/ladiWals"
 
 // Создаю объект XMLHttpRequest
 request = new asuncRequest()
@@ -33,7 +33,7 @@ request.onreadystatechange = function()
 }
 
 // Отправка запроса на сервер
-request.send(	)
+request.send(params)
 
 // Создаёт объект XMLHttpRequest (кросс-браузерно)
 function asuncRequest()
