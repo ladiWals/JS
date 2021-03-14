@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
 	<title>Часики</title>
 </head>
+
 <body>
-	
+	<span id="clock"></span>
+	<script>
+
+		function clock() {
+			var date = new Date
+			hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours(),
+        	minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes(),
+        	seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+        	document.getElementById('clock').innerHTML = (hours + ':' + minutes + ':' + seconds)
+		}
+
+		setInterval(clock, 500)
+	</script>
 </body>
 </html>
