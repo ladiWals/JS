@@ -1,14 +1,14 @@
 <?php
+
+// Заношу всё содрежимое директории в массив
 $list = scandir(__DIR__);
-$htmlList = [];
 
-// Выборка файлов с расширением html
-foreach ($list as $item) {
-	if (preg_match('/.html/', $item)) {
-		$htmlList[] = $item;
-	}
-}
-
+// Список директорий, которые буду игнорировать (не являются подпроектами)
+$ignore = [
+	'.', 
+	'..',
+	'.git'
+];	
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,11 +20,14 @@ foreach ($list as $item) {
 </head>
 
 <body>
-    <ul>
-    	<?php foreach($htmlList as $item) { ?>
-	    	<li><a href="/<?=$item?>"><?=str_replace('.html', '', $item)?></a></li>
-	    <?php } ?>
-    </ul>
+	<ul>
+		<?php 
+		foreach ($list as $item) {
+			if (!in_array($item, $ignore) && is_dir($item)) {
+			?>
+			<li><a href="/<?=$item . '/' . $item . '.html'?>"><?=$item?></a></li>
+		<?php } }?>
+	</ul>
 </body>
 
 </html>
