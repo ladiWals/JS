@@ -1,0 +1,19 @@
+body {
+	background-color: white;
+	background-image: url(mountains.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+
+	text-align: center;
+	font-family: Z003;
+}
+
+#clock {
+	font-size: 170px;
+	color: #fff;
+}
+
+#clock_block {
+	display: inline-block;
+	margin: 370px auto;
+}
